@@ -99,7 +99,7 @@ jobs:
         with:
           repository: SweetSmellFox/MFAWPF
           filename: MFAWPF*
-          tag: 1.2.1.5  # 指定版本号
+          tag: 1.2.1.7  # 指定版本号
           out-file-path: "MFA"
           extract: true
 
@@ -107,13 +107,13 @@ jobs:
         shell: bash
         run: |
           python ./install.py ${{ needs.meta.outputs.tag }}
-          cp ./MFA/MFAWPF.exe ./install
+          cp ./MFA/MFAWPF.exe ./install/MaaGF2Exilium.exe
           # url项示例  https://github.com/SweetSmellFox/MFAWPF
-          jq --arg version_name "逃离赛博格" --arg url ""https://github.com/DarkLingYun/redemo"" --arg version ${{ needs.meta.outputs.tag }} '. + {"name": $version_name, "url": $url,"version": $version}' ./assets/interface.json > ./install/interface.json
+          jq --arg version_name "纪念日礼赞" --arg url ""https://github.com/DarkLingYun/redemo"" --arg version ${{ needs.meta.outputs.tag }} '. + {"name": $version_name, "url": $url,"version": $version}' ./assets/interface.json > ./install/interface.json
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MAAxxx-win-${{ matrix.arch }}
+          name: MaaGF2Exilium-win-${{ matrix.arch }}
           path: "install"
 
   ubuntu:
@@ -145,7 +145,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MAAxxx-linux-${{ matrix.arch }}
+          name: MaaGF2Exilium-linux-${{ matrix.arch }}
           path: "install"
 
   macos:
@@ -177,7 +177,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MAAxxx-macos-${{ matrix.arch }}
+          name: MaaGF2Exilium-macos-${{ matrix.arch }}
           path: "install"
 
   android:
@@ -210,7 +210,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MAAxxx-android-${{ matrix.arch }}
+          name: MaaGF2Exilium-android-${{ matrix.arch }}
           path: "install"
 
   release:
